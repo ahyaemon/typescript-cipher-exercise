@@ -37,5 +37,5 @@ Deno.test({
         const result4 = measureSeconds(() => { reverse4(plainText) }, 1000)
         console.log({result4})
     },
-    ignore: false,
+    ignore: true,
 })
