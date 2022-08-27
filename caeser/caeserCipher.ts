@@ -1,4 +1,4 @@
-const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+export const symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
 
 export function encrypt(plainText: string, key: number): string {
     return move(plainText, key, i => (i + key) % symbols.length)
