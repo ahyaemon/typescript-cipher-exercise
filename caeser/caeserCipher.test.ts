@@ -9,11 +9,11 @@ Deno.test('encrypt', () => {
     assertEquals(encrypt(plainText, 13), encryptedByKey13)
 })
 
-// Deno.test('decrypt', () => {
-//     assertEquals(decrypt(encryptedByKey13, 13), plainText)
-// })
-//
-// Deno.test('key 12', () => {
-//     const encryptedByKey12 = encrypt(plainText, 12)
-//     assertNotEquals(encryptedByKey12, encryptedByKey13)
-// })
+Deno.test('decrypt', () => {
+    assertEquals(decrypt(encryptedByKey13, 13), plainText)
+})
+
+Deno.test('key 12', () => {
+    const encryptedByKey12 = encrypt(plainText, 12)
+    assertNotEquals(encryptedByKey12, encryptedByKey13)
+})
