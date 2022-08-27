@@ -1,5 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.65.0/testing/asserts.ts";
 import {reverse, reverse2, reverse3, reverse4} from "./reverseCipher.ts";
+import {measureSeconds} from "../measure.ts";
 
 const plainText = 'Three can keep a secret, if two of them are dead.'
 const expected = '.daed era meht fo owt fi ,terces a peek nac eerhT'
@@ -38,12 +39,3 @@ Deno.test({
     },
     ignore: false,
 })
-
-function measureSeconds(f: () => void, times: number): number {
-    const t0 = performance.now()
-    for(let i = 0; i < times; i++) {
-        f()
-    }
-    const t1 = performance.now()
-    return t1 - t0
-}

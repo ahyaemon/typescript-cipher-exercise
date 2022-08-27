@@ -20,3 +20,23 @@ function move(text: string, key: number, createNewIndex: (i: number) => number):
 
     return after
 }
+
+export function encrypt2(plainText: string, key: number): string {
+    const memo = new Map<string, string>()
+
+    let after = ''
+
+    for (const s of plainText) {
+        if (memo.has(s)) {
+            after = after + memo.get(s)
+        } else {
+            const i = symbols.indexOf(s)
+            const i2 = (i + key) % symbols.length
+            const s2 = symbols[i2]
+            after = after + s2
+            memo.set(s, s2)
+        }
+    }
+
+    return after
+}
