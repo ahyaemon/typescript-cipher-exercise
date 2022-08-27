@@ -1,5 +1,5 @@
 import { assertEquals, assertNotEquals } from "https://deno.land/std@0.65.0/testing/asserts.ts";
-import {decrypt, encrypt, encrypt2} from "./caeserCipher.ts";
+import {decrypt, encrypt, encrypt2} from "./caesarCipher.ts";
 import {measureSeconds} from "../measure.ts";
 
 const plainText = 'This is my secret message.'
