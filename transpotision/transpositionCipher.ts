@@ -39,3 +39,18 @@ export function encrypt2(plainText: string, key: number): string {
     }
     return encryptedText
 }
+
+export function decrypt(encryptedText: string, key: number): string {
+    const colCount = Math.floor(encryptedText.length / key) + 1
+    let decryptedText = ''
+    for (let icol = 0; icol < colCount; icol++) {
+        for (let irow = 0; irow < key; irow++) {
+            const i = irow * colCount + icol
+            console.log((icol + 1) * key + irow - 1)
+            if ((icol + 1) * key + irow < encryptedText.length) {
+                decryptedText += encryptedText[i]
+            }
+        }
+    }
+    return decryptedText
+}

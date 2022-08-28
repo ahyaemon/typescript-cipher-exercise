@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.65.0/testing/asserts.ts";
-import {encrypt, encrypt2} from "./transpositionCipher.ts";
+import {decrypt, encrypt, encrypt2} from "./transpositionCipher.ts";
 import {measureSeconds} from "../measure.ts";
 
 const plainText = 'Underneath a huge oak tree there was of swine a huge company,'
@@ -14,6 +14,31 @@ Deno.test('encrypt', () => {
 
 Deno.test('encrypt2', () => {
     assertEquals(encrypt2(plainText, key), encryptedText)
+})
+
+// fail
+//
+// Uhot__o
+// n_ahoam
+// dakef_p
+// e__r_ha
+// rhtesun
+// nur_wgy
+// egewie,
+// aeean_|
+// t__sec|
+//
+// Uhot__o
+// n_ahoam
+// dakef_p
+// e__r_ha
+// rhtesun
+// nur_wgy
+// egewie,
+// aeean_t
+// __sec||
+Deno.test('decrypt', () => {
+    assertEquals(decrypt(encryptedText, key), plainText)
 })
 
 Deno.test({
