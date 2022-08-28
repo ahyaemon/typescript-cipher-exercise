@@ -16,27 +16,6 @@ Deno.test('encrypt2', () => {
     assertEquals(encrypt2(plainText, key), encryptedText)
 })
 
-// fail
-//
-// Uhot__o
-// n_ahoam
-// dakef_p
-// e__r_ha
-// rhtesun
-// nur_wgy
-// egewie,
-// aeean_|
-// t__sec|
-//
-// Uhot__o
-// n_ahoam
-// dakef_p
-// e__r_ha
-// rhtesun
-// nur_wgy
-// egewie,
-// aeean_t
-// __sec||
 Deno.test('decrypt', () => {
     assertEquals(decrypt(encryptedText, key), plainText)
 })

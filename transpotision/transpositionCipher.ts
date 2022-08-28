@@ -41,16 +41,20 @@ export function encrypt2(plainText: string, key: number): string {
 }
 
 export function decrypt(encryptedText: string, key: number): string {
-    const colCount = Math.floor(encryptedText.length / key) + 1
+    const ncol = Math.floor(encryptedText.length / key) + 1
+    const rows: string[] = []
+    const indexOfDefectedRow = key - (ncol * key - encryptedText.length)
+    let start = 0
+    for (let irow = 0; irow < key; irow++) {
+        const itemCount = (irow < indexOfDefectedRow) ? ncol : ncol - 1
+        const row = encryptedText.slice(start, start + itemCount)
+        rows.push(row)
+        start += itemCount
+    }
+
     let decryptedText = ''
-    for (let icol = 0; icol < colCount; icol++) {
-        for (let irow = 0; irow < key; irow++) {
-            const i = irow * colCount + icol
-            console.log((icol + 1) * key + irow - 1)
-            if ((icol + 1) * key + irow < encryptedText.length) {
-                decryptedText += encryptedText[i]
-            }
-        }
+    for (let icol = 0; icol < ncol; icol++) {
+        decryptedText += rows.map(row => row[icol]).filter(row => row !== undefined).join('')
     }
     return decryptedText
 }
