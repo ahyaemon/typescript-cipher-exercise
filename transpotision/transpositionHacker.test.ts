@@ -6,5 +6,7 @@ const encryptedText = "AaKoosoeDe5 b5sn ma reno ora'lhlrrceey e  enlh na  indeit
 const decryptedText = "Augusta Ada King-Noel, Countess of Lovelace (10 December 1815 - 27 November 1852) was an English mathematician and writer, chiefly known for her work on Charles Babbage's early mechanical general-purpose computer, the Analytical Engine. Her notes on the engine include what is recognised as the first algorithm intended to be carried out by a machine. As a result, she is often regarded as the first computer programmer."
 
 Deno.test('hack', () => {
-    assertEquals(hack(encryptedText), decryptedText)
+    const result = hack(encryptedText)
+    assertEquals(result.decryptedText, decryptedText)
+    console.log({result})
 })

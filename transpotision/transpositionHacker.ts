@@ -1,12 +1,17 @@
 import {decrypt} from "./transpositionCipher.ts";
 import {isEnglish} from "../detectEnglish/detectEnglish.ts";
 
-export function hack(message: string): string {
+type TranspositionHackResult = {
+    key: number,
+    decryptedText: string,
+}
+
+export function hack(message: string): TranspositionHackResult {
     for (let key = 2; key < message.length; key++) {
-        const decrypted = decrypt(message, key)
-        if (isEnglish(decrypted)) {
-            return decrypted
+        const decryptedText = decrypt(message, key)
+        if (isEnglish(decryptedText)) {
+            return { key, decryptedText }
         }
     }
-    return ''
+    throw Error('you are an idiot! ha haha ha ha ha haaa! ah hahaha haa!')
 }
