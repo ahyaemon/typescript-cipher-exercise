@@ -12,10 +12,8 @@ const dictionary = loadDictionary()
 export function getEnglishCount(message: string): number {
     const upper = message.toUpperCase()
     const words = removeNonLetters(upper).split(/\s/).filter(word => word.length > 0)
-    const matches = words
-        .filter(word => dictionary.includes(word))
-        .length
-    return matches / words.length
+    const matchWords = words.filter(word => dictionary.includes(word))
+    return matchWords.length / words.length
 }
 
 export function removeNonLetters(message: string): string {
@@ -27,7 +25,7 @@ export function isEnglish(
     wordPercentage: number = 20,
     letterPercentage: number = 85,
 ): boolean {
-    const wordsMatch = getEnglishCount(message) * 100 / wordPercentage
+    const wordsMatch = getEnglishCount(message) * 100 >= wordPercentage
     if (!wordsMatch) {
         return false
     }
