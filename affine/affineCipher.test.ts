@@ -1,5 +1,5 @@
 import { assertEquals} from "https://deno.land/std@0.65.0/testing/asserts.ts";
-import {createKeys, encrypt} from "./affineCipher.ts";
+import {createKeys, decrypt, encrypt} from "./affineCipher.ts";
 import {symbols} from "../symbols.ts";
 
 const plainText = `A computer would deserve to be called intelligent if it could deceive a human into believing that it was human." -Alan Turing`
@@ -15,4 +15,9 @@ Deno.test('createKeys', () => {
 
 Deno.test('encrypt', () => {
     assertEquals(encrypt(plainText, key), encryptedText)
+})
+
+Deno.test('decrypt', () => {
+    const decryptedText = decrypt(encryptedText, key)
+    assertEquals(decryptedText, plainText)
 })
