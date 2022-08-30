@@ -1,4 +1,5 @@
-import {decrypt, symbols} from "./caesarCipher.ts";
+import {decrypt} from "./caesarCipher.ts";
+import {symbols} from "../symbols.ts";
 
 type Result = {
     key: number
