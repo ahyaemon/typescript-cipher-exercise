@@ -1,14 +1,14 @@
 import {symbols} from "../symbols.ts";
 
 export function encrypt(plainText: string, key: number): string {
-    return move(plainText, key, i => (i + key) % symbols.length)
+    return move(plainText, i => (i + key) % symbols.length)
 }
 
 export function decrypt(encryptedText: string, key: number): string {
-    return move(encryptedText, key, i => (i + symbols.length - key) % symbols.length)
+    return move(encryptedText, i => (i + symbols.length - key) % symbols.length)
 }
 
-function move(text: string, key: number, createNewIndex: (i: number) => number): string {
+function move(text: string, createNewIndex: (i: number) => number): string {
     let after = ''
 
     for (const s of text) {
