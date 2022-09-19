@@ -2,7 +2,7 @@ const upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const lowerLetters = upperLetters.toLowerCase()
 const lettersAndSpace = upperLetters + lowerLetters + ' \t\n'
 
-function loadDictionary(): string[] {
+export function loadDictionary(): string[] {
     const txt = Deno.readTextFileSync('detectEnglish/dictionary.txt') as string
     return txt.replaceAll('\r\n', '\n').split('\n')
 }
